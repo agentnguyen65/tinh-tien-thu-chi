@@ -74,7 +74,7 @@ with st.sidebar:
         if st.button("Lập Bảng & Thiết Lập Vốn", key="btn_vốn"):
             generate_finance_report({'capital_input': initial_cap})
             st.success("Đã thiết lập vốn! Hãy nhập giao dịch.")
-            st.experimental_rerun() # Tải lại để ẩn ô vốn
+            st.rerun() # Tải lại để ẩn ô vốn
 
     # 2. Nhập Giao Dịch (Chỉ hiện khi đã có vốn)
     if st.session_state['state']['initial_capital'] is not None:
@@ -108,7 +108,7 @@ with st.sidebar:
                 }
                 generate_finance_report(input_data)
                 st.success(f"Đã ghi nhận giao dịch: {transaction_type} {transaction_value} VNĐ")
-                st.experimental_rerun() # Tải lại để cập nhật kết quả
+                st.rerun() # Tải lại để cập nhật kết quả
 
 # --- KHU VỰC HIỂN THỊ KẾT QUẢ (OUTPUT_SCHEMA) ---
 
@@ -140,5 +140,6 @@ else:
         st.dataframe(df.sort_index(ascending=False), use_container_width=True)
     else:
         st.warning("Chưa có giao dịch nào được ghi nhận.")
+
 
 # Giao diện luôn gồm: Ô nhập thông tin (sidebar), Nút “Tạo kết quả”, Khung hiển thị kết quả.
