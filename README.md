@@ -1,1 +1,0 @@
-# tinh-tien-thu-chi
